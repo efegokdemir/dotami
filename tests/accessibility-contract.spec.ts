@@ -15,7 +15,9 @@ describe("accessibility contracts for interactive map controls", () => {
   it("names map cards and exposes their selection state", () => {
     const map = source("components/cockpit/strategy-map.tsx");
     expect(map).toContain("aria-label={`${node.label}, ${chip.label}, opens detail`}");
-    expect(map).toContain("aria-label={`Open details for ${item.title}`}");
+    expect(map).toContain(
+      'aria-label={`${item.typeChip}: ${item.title}, ${label}${item.fork ? ", fork" : ""}${partial ? ", partial citation" : ""}${fact ? `, ${fact}` : ""}, opens detail`}',
+    );
     expect(map).toContain("aria-pressed={selected}");
   });
 

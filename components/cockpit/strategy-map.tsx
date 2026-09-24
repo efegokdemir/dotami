@@ -249,7 +249,7 @@ function LeverCard({ item, onClick }: { item: UnlockItem; onClick: () => void })
       <button
         type="button"
         onClick={onClick}
-        aria-label={`Open details for ${item.title}`}
+        aria-label={`${item.typeChip}: ${item.title}, ${label}${item.fork ? ", fork" : ""}${partial ? ", partial citation" : ""}${fact ? `, ${fact}` : ""}, opens detail`}
         className="w-full rounded-md border border-rule bg-ink2 px-2.5 py-2 text-left transition hover:border-maple-soft"
       >
         <div className="flex items-center gap-2">
