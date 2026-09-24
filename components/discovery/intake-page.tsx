@@ -393,7 +393,10 @@ export function IntakePage() {
                     onChange={(e) =>
                       setIntake((p) => ({
                         ...p,
-                        employmentStatus: e.target.value as EmploymentStatus,
+                        employmentStatus:
+                          e.target.value === ""
+                            ? null
+                            : (e.target.value as EmploymentStatus),
                       }))
                     }
                     className="w-full max-w-sm rounded border border-rule bg-ink px-3 py-2.5 text-sm text-paper outline-none focus:border-maple-soft"
