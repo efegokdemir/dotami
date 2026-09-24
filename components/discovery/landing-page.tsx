@@ -53,7 +53,7 @@ export function LandingPage() {
   }
 
   return (
-    <div className="flex min-h-screen flex-col bg-ink">
+    <div className="flex min-h-[calc(100vh-2.5rem)] flex-col bg-ink">
       <header className="flex items-center justify-between border-b border-rule-soft px-8 py-7 md:px-14">
         <WordMark />
         <div className="flex items-center gap-5">

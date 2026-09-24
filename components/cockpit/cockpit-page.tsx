@@ -175,7 +175,7 @@ export function CockpitPage({ initialScenario, pinned = false }: CockpitPageProp
   const showRightSlot = rightPanel === "playbook" || (rightPanel === "node" && selectedNode);
 
   return (
-    <div className="grid h-screen grid-rows-[52px_1fr] overflow-hidden bg-ink">
+    <div className="grid h-[calc(100vh-2.5rem)] grid-rows-[52px_1fr] overflow-hidden bg-ink">
       {/* Header — S2.5.4c: minmax(0, …) columns so nothing overlaps when the window is narrow. */}
       <header className="grid grid-cols-[240px_minmax(0,1fr)_auto] border-b border-rule bg-[#0f0e12]">
         <div className="flex min-w-0 items-center gap-[18px] border-r border-rule px-[22px]">
@@ -360,7 +360,7 @@ export function CockpitPage({ initialScenario, pinned = false }: CockpitPageProp
 /** No venture saved and none in this session: say so, point at the intake. */
 function EmptyCockpit() {
   return (
-    <div className="flex h-screen flex-col bg-ink">
+    <div className="flex h-[calc(100vh-2.5rem)] flex-col bg-ink">
       <header className="flex h-[52px] items-center gap-[18px] border-b border-rule bg-[#0f0e12] px-[22px]">
         <Link href="/" className="font-mono text-[11px] text-stone transition hover:text-paper">
           ← Back

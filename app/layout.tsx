@@ -16,7 +16,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="min-h-screen bg-ink font-sans text-[13px] leading-snug text-paper antialiased">
         {children}
-        <footer className="border-t border-rule-soft px-8 py-4 text-center text-[11px] text-stone-dim md:px-14">
+        <footer className="flex h-10 shrink-0 items-center justify-center border-t border-rule-soft px-8 text-center text-[11px] text-stone-dim md:px-14">
           Information, not legal or tax advice · a prep tool for you and your accountant ·{" "}
           <a
             href="https://github.com/Dot-Ami/dotami"
