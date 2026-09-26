@@ -223,23 +223,28 @@ function evaluateComplianceRule(profile: EvaluationProfile, entry: ComplianceRul
   let typeChip: UnlockTypeChip = "Compliance";
   let step: IntakeStep = "location";
   let payoff = entry.lensAnnotations.tax;
-  let why = `Shown because you selected ${provinceName(profile.province)}.`;
+  let why = entry.provinces.includes("CA")
+    ? "Shown because this is a federal rule that applies across Canada."
+    : `Shown because you selected ${provinceName(profile.province)}.`;
 
   if (entry.thresholdAmount !== undefined) {
     typeChip = "Threshold";
     const y1 = profile.targetRevenueY1;
+    const federalContext = entry.provinces.includes("CA")
+      ? "This federal rule applies across Canada and "
+      : "";
     // CRA's small-supplier rule triggers on EXCEEDING the threshold, not reaching it —
     // registration is required once revenue is over $30K, not at exactly $30K (audit
     // H3). Matches the `>` used in `computeNodeStates`'s `gstTriggered` below.
     if (y1 > entry.thresholdAmount) {
       state = "yellow";
       step = "refine";
-      why = `Shown because your Y1 revenue target crosses the ${entry.threshold ?? "registration"} threshold.`;
+      why = `Shown because ${federalContext}your Y1 revenue target crosses the ${entry.threshold ?? "registration"} threshold.`;
       payoff = "If your assumptions hold, registration timing becomes a checkpoint on the map, not a surprise.";
     } else if (y1 >= entry.thresholdAmount * THRESHOLD_WATCH_RATIO) {
       state = "yellow";
       step = "refine";
-      why = `Shown because your Y1 revenue target approaches the ${entry.threshold ?? "registration"} threshold.`;
+      why = `Shown because ${federalContext}your Y1 revenue target approaches the ${entry.threshold ?? "registration"} threshold.`;
       payoff = "If revenue lands near this line, the voluntary-vs-mandatory registration fork is worth modeling early.";
     }
   }

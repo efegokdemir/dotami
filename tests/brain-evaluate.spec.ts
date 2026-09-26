@@ -66,6 +66,7 @@ describe("strategy rules engine — GPU/workstation golden scenario", () => {
     const gst = byId.get("compliance-gst-small-supplier");
     expect(gst).toBeDefined();
     expect(gst!.typeChip).toBe("Threshold");
+    expect(gst!.why).toContain("This federal rule applies across Canada");
     // Y1 = $30K sits exactly on the threshold — watch state, not silence.
     expect(gst!.state).toBe("yellow");
   });
